@@ -29,12 +29,17 @@ namespace AdvancedImageProcessing
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.btnInputFile = new System.Windows.Forms.Button();
             this.btnImageRotation = new System.Windows.Forms.Button();
             this.picInput = new System.Windows.Forms.PictureBox();
             this.picOutput = new System.Windows.Forms.PictureBox();
+            this.btnImageHistogram = new System.Windows.Forms.Button();
+            this.chartImageHistogram = new System.Windows.Forms.DataVisualization.Charting.Chart();
             ((System.ComponentModel.ISupportInitialize)(this.picInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picOutput)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartImageHistogram)).BeginInit();
             this.SuspendLayout();
             // 
             // btnInputFile
@@ -73,11 +78,44 @@ namespace AdvancedImageProcessing
             this.picOutput.TabIndex = 3;
             this.picOutput.TabStop = false;
             // 
+            // btnImageHistogram
+            // 
+            this.btnImageHistogram.Location = new System.Drawing.Point(226, 34);
+            this.btnImageHistogram.Name = "btnImageHistogram";
+            this.btnImageHistogram.Size = new System.Drawing.Size(75, 23);
+            this.btnImageHistogram.TabIndex = 4;
+            this.btnImageHistogram.Text = "直方圖";
+            this.btnImageHistogram.UseVisualStyleBackColor = true;
+            this.btnImageHistogram.Click += new System.EventHandler(this.btnImageHistogram_Click);
+            // 
+            // chartImageHistogram
+            // 
+            chartArea1.AxisX.MajorGrid.Enabled = false;
+            chartArea1.AxisX.Title = "Intensity";
+            chartArea1.AxisX.TitleAlignment = System.Drawing.StringAlignment.Far;
+            chartArea1.AxisY.MajorGrid.Enabled = false;
+            chartArea1.AxisY.Title = "Frequency";
+            chartArea1.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
+            chartArea1.Name = "ChartArea1";
+            this.chartImageHistogram.ChartAreas.Add(chartArea1);
+            this.chartImageHistogram.Enabled = false;
+            this.chartImageHistogram.Location = new System.Drawing.Point(412, 111);
+            this.chartImageHistogram.Name = "chartImageHistogram";
+            this.chartImageHistogram.Size = new System.Drawing.Size(349, 291);
+            this.chartImageHistogram.TabIndex = 5;
+            this.chartImageHistogram.Text = "直方圖";
+            title1.Name = "Title1";
+            title1.Text = "Image Histogram";
+            this.chartImageHistogram.Titles.Add(title1);
+            this.chartImageHistogram.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.chartImageHistogram);
+            this.Controls.Add(this.btnImageHistogram);
             this.Controls.Add(this.picOutput);
             this.Controls.Add(this.picInput);
             this.Controls.Add(this.btnImageRotation);
@@ -86,6 +124,7 @@ namespace AdvancedImageProcessing
             this.Text = "AIP61147046s";
             ((System.ComponentModel.ISupportInitialize)(this.picInput)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picOutput)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartImageHistogram)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -96,6 +135,8 @@ namespace AdvancedImageProcessing
         private System.Windows.Forms.Button btnImageRotation;
         private System.Windows.Forms.PictureBox picInput;
         private System.Windows.Forms.PictureBox picOutput;
+        private System.Windows.Forms.Button btnImageHistogram;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartImageHistogram;
     }
 }
 
