@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -61,7 +62,13 @@ namespace AdvancedImageProcessing
                 Bitmap bmp = new Bitmap(image);
                 picOutput.SizeMode = PictureBoxSizeMode.StretchImage;
                 picOutput.BackgroundImageLayout = ImageLayout.Stretch;
-                picOutput.Image = bmp; 
+                picOutput.Image = bmp;
+                int i = 0;
+                while (File.Exists("ImageRotation" + (i == 0 ? "" : i.ToString()) +  ".bmp"))
+                {
+                    i++;
+                }
+                picOutput.Image.Save("ImageRotation" + (i == 0 ? "" : i.ToString()) + ".bmp");
             }
         }
     }
