@@ -39,7 +39,15 @@ namespace AdvancedImageProcessing
                 picInput.BackgroundImageLayout = ImageLayout.Stretch;
                 try
                 {
-                    picInput.Load(openFileDialog.FileName);
+                    //使用ShaniSoft套件處理.ppm影像讀取
+                    if (openFileDialog.FileName.ToLower().Contains("ppm"))
+                    {
+                        picInput.Image = ShaniSoft.Drawing.PNM.ReadPNM(openFileDialog.FileName);
+                    }
+                    else
+                    {
+                        picInput.Load(openFileDialog.FileName);
+                    }
                 }
                 catch (Exception)
                 {
@@ -56,6 +64,8 @@ namespace AdvancedImageProcessing
         /// <param name="e"></param>
         private void btnImageRotation_Click(object sender, EventArgs e)
         {
+            chartImageHistogram.Visible = false;
+            picOutput.Visible = true;
             Image image = picInput.Image;
             if (image != null)
             {
@@ -80,6 +90,8 @@ namespace AdvancedImageProcessing
         /// <param name="e"></param>
         private void btnImageHistogram_Click(object sender, EventArgs e)
         {
+            picOutput.Visible = false;
+            chartImageHistogram.Visible = true;
             Image image = picInput.Image;
             if (image != null)
             {
@@ -101,7 +113,6 @@ namespace AdvancedImageProcessing
                     }
                 }
 
-
                 Series series = new Series
                 {
                     Color = Color.Gray,
@@ -115,7 +126,6 @@ namespace AdvancedImageProcessing
                 {
                     series.Points.AddXY(i, values[i]);
                 }
-                chartImageHistogram.Visible = true;
                 chartImageHistogram.Series.Clear();
                 chartImageHistogram.Series.Add(series);
                 chartImageHistogram.Series[0]["PointWidth"] = "1";
