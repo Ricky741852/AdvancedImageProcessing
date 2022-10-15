@@ -195,12 +195,7 @@ namespace AdvancedImageProcessing
                     picInput.Visible = false;
                     picOutput.Visible = false;
                     chartHistogram.Visible = false;
-                    picNoiseInput.Visible = true;
-                    picNoise.Visible = true;
-                    picNoiseOutput.Visible = true;
-                    chartNoiseInputHistogram.Visible = true;
-                    chartNoiseHistogram.Visible = true;
-                    chartNoiseOutputHistogram.Visible = true;
+                    gpNoiseGeneration.Visible = true;
 
                     #endregion
 
@@ -379,14 +374,9 @@ namespace AdvancedImageProcessing
         /// </summary>
         private void InitPictureBox()
         {
-            picNoiseInput.Visible = false;
-            picNoise.Visible = false;
-            picNoiseOutput.Visible = false;
-            picOutput.Visible = false;
+            gpNoiseGeneration.Visible = false;
             chartHistogram.Visible = false;
-            chartNoiseInputHistogram.Visible = false;
-            chartNoiseHistogram.Visible = false;
-            chartNoiseOutputHistogram.Visible = false;
+            picOutput.Visible = false;
             picInput.Visible = true;
         }
     }

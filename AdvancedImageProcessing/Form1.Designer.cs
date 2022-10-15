@@ -50,6 +50,7 @@ namespace AdvancedImageProcessing
             this.chartNoiseInputHistogram = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chartNoiseHistogram = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chartNoiseOutputHistogram = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.gpNoiseGeneration = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.picInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picOutput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartHistogram)).BeginInit();
@@ -59,6 +60,7 @@ namespace AdvancedImageProcessing
             ((System.ComponentModel.ISupportInitialize)(this.chartNoiseInputHistogram)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartNoiseHistogram)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartNoiseOutputHistogram)).BeginInit();
+            this.gpNoiseGeneration.SuspendLayout();
             this.SuspendLayout();
             // 
             // picInput
@@ -143,30 +145,27 @@ namespace AdvancedImageProcessing
             // 
             // picNoise
             // 
-            this.picNoise.Location = new System.Drawing.Point(308, 75);
+            this.picNoise.Location = new System.Drawing.Point(278, 0);
             this.picNoise.Name = "picNoise";
             this.picNoise.Size = new System.Drawing.Size(175, 146);
             this.picNoise.TabIndex = 7;
             this.picNoise.TabStop = false;
-            this.picNoise.Visible = false;
             // 
             // picNoiseOutput
             // 
-            this.picNoiseOutput.Location = new System.Drawing.Point(586, 75);
+            this.picNoiseOutput.Location = new System.Drawing.Point(556, 0);
             this.picNoiseOutput.Name = "picNoiseOutput";
             this.picNoiseOutput.Size = new System.Drawing.Size(175, 146);
             this.picNoiseOutput.TabIndex = 8;
             this.picNoiseOutput.TabStop = false;
-            this.picNoiseOutput.Visible = false;
             // 
             // picNoiseInput
             // 
-            this.picNoiseInput.Location = new System.Drawing.Point(30, 75);
+            this.picNoiseInput.Location = new System.Drawing.Point(0, 0);
             this.picNoiseInput.Name = "picNoiseInput";
             this.picNoiseInput.Size = new System.Drawing.Size(175, 146);
             this.picNoiseInput.TabIndex = 9;
             this.picNoiseInput.TabStop = false;
-            this.picNoiseInput.Visible = false;
             // 
             // chartNoiseInputHistogram
             // 
@@ -181,7 +180,7 @@ namespace AdvancedImageProcessing
             chartArea2.Name = "ChartArea1";
             this.chartNoiseInputHistogram.ChartAreas.Add(chartArea2);
             this.chartNoiseInputHistogram.Enabled = false;
-            this.chartNoiseInputHistogram.Location = new System.Drawing.Point(30, 259);
+            this.chartNoiseInputHistogram.Location = new System.Drawing.Point(0, 184);
             this.chartNoiseInputHistogram.Name = "chartNoiseInputHistogram";
             this.chartNoiseInputHistogram.Size = new System.Drawing.Size(175, 146);
             this.chartNoiseInputHistogram.TabIndex = 10;
@@ -189,7 +188,6 @@ namespace AdvancedImageProcessing
             title2.Name = "Title1";
             title2.Text = "Input Histogram";
             this.chartNoiseInputHistogram.Titles.Add(title2);
-            this.chartNoiseInputHistogram.Visible = false;
             // 
             // chartNoiseHistogram
             // 
@@ -208,7 +206,7 @@ namespace AdvancedImageProcessing
             chartArea3.Name = "ChartArea1";
             this.chartNoiseHistogram.ChartAreas.Add(chartArea3);
             this.chartNoiseHistogram.Enabled = false;
-            this.chartNoiseHistogram.Location = new System.Drawing.Point(308, 259);
+            this.chartNoiseHistogram.Location = new System.Drawing.Point(278, 184);
             this.chartNoiseHistogram.Name = "chartNoiseHistogram";
             this.chartNoiseHistogram.Size = new System.Drawing.Size(175, 146);
             this.chartNoiseHistogram.TabIndex = 11;
@@ -216,7 +214,6 @@ namespace AdvancedImageProcessing
             title3.Name = "Title1";
             title3.Text = "Noise Histogram";
             this.chartNoiseHistogram.Titles.Add(title3);
-            this.chartNoiseHistogram.Visible = false;
             // 
             // chartNoiseOutputHistogram
             // 
@@ -234,7 +231,7 @@ namespace AdvancedImageProcessing
             chartArea4.Name = "ChartArea1";
             this.chartNoiseOutputHistogram.ChartAreas.Add(chartArea4);
             this.chartNoiseOutputHistogram.Enabled = false;
-            this.chartNoiseOutputHistogram.Location = new System.Drawing.Point(586, 259);
+            this.chartNoiseOutputHistogram.Location = new System.Drawing.Point(556, 184);
             this.chartNoiseOutputHistogram.Name = "chartNoiseOutputHistogram";
             this.chartNoiseOutputHistogram.Size = new System.Drawing.Size(175, 146);
             this.chartNoiseOutputHistogram.TabIndex = 12;
@@ -242,19 +239,27 @@ namespace AdvancedImageProcessing
             title4.Name = "Title1";
             title4.Text = "Output Histogram";
             this.chartNoiseOutputHistogram.Titles.Add(title4);
-            this.chartNoiseOutputHistogram.Visible = false;
+            // 
+            // gpNoiseGeneration
+            // 
+            this.gpNoiseGeneration.Controls.Add(this.picNoise);
+            this.gpNoiseGeneration.Controls.Add(this.chartNoiseOutputHistogram);
+            this.gpNoiseGeneration.Controls.Add(this.chartNoiseHistogram);
+            this.gpNoiseGeneration.Controls.Add(this.picNoiseInput);
+            this.gpNoiseGeneration.Controls.Add(this.chartNoiseInputHistogram);
+            this.gpNoiseGeneration.Controls.Add(this.picNoiseOutput);
+            this.gpNoiseGeneration.Location = new System.Drawing.Point(30, 75);
+            this.gpNoiseGeneration.Name = "gpNoiseGeneration";
+            this.gpNoiseGeneration.Size = new System.Drawing.Size(731, 330);
+            this.gpNoiseGeneration.TabIndex = 13;
+            this.gpNoiseGeneration.TabStop = false;
+            this.gpNoiseGeneration.Visible = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.chartNoiseOutputHistogram);
-            this.Controls.Add(this.chartNoiseHistogram);
-            this.Controls.Add(this.chartNoiseInputHistogram);
-            this.Controls.Add(this.picNoiseInput);
-            this.Controls.Add(this.picNoiseOutput);
-            this.Controls.Add(this.picNoise);
             this.Controls.Add(this.btnNoiseGeneration);
             this.Controls.Add(this.chartHistogram);
             this.Controls.Add(this.btnImageHistogram);
@@ -262,6 +267,7 @@ namespace AdvancedImageProcessing
             this.Controls.Add(this.picInput);
             this.Controls.Add(this.btnImageRotation);
             this.Controls.Add(this.btnInputFile);
+            this.Controls.Add(this.gpNoiseGeneration);
             this.Name = "Form1";
             this.Text = "AIP61147046s";
             ((System.ComponentModel.ISupportInitialize)(this.picInput)).EndInit();
@@ -273,6 +279,7 @@ namespace AdvancedImageProcessing
             ((System.ComponentModel.ISupportInitialize)(this.chartNoiseInputHistogram)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartNoiseHistogram)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartNoiseOutputHistogram)).EndInit();
+            this.gpNoiseGeneration.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -291,6 +298,7 @@ namespace AdvancedImageProcessing
         private System.Windows.Forms.DataVisualization.Charting.Chart chartNoiseInputHistogram;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartNoiseHistogram;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartNoiseOutputHistogram;
+        private System.Windows.Forms.GroupBox gpNoiseGeneration;
     }
 }
 
