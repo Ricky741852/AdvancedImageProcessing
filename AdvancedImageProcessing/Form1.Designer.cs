@@ -51,6 +51,7 @@ namespace AdvancedImageProcessing
             this.chartNoiseHistogram = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chartNoiseOutputHistogram = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.gpNoiseGeneration = new System.Windows.Forms.GroupBox();
+            this.btnConvolution = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picOutput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartHistogram)).BeginInit();
@@ -65,17 +66,20 @@ namespace AdvancedImageProcessing
             // 
             // picInput
             // 
-            this.picInput.Location = new System.Drawing.Point(30, 75);
+            this.picInput.Location = new System.Drawing.Point(40, 94);
+            this.picInput.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.picInput.Name = "picInput";
-            this.picInput.Size = new System.Drawing.Size(349, 291);
+            this.picInput.Size = new System.Drawing.Size(465, 364);
             this.picInput.TabIndex = 2;
             this.picInput.TabStop = false;
             // 
             // picOutput
             // 
-            this.picOutput.Location = new System.Drawing.Point(412, 75);
+            this.picOutput.Location = new System.Drawing.Point(549, 94);
+            this.picOutput.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.picOutput.Name = "picOutput";
-            this.picOutput.Size = new System.Drawing.Size(349, 291);
+            this.picOutput.Size = new System.Drawing.Size(465, 364);
+            this.picOutput.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picOutput.TabIndex = 3;
             this.picOutput.TabStop = false;
             this.picOutput.Visible = false;
@@ -93,9 +97,10 @@ namespace AdvancedImageProcessing
             chartArea1.Name = "ChartArea1";
             this.chartHistogram.ChartAreas.Add(chartArea1);
             this.chartHistogram.Enabled = false;
-            this.chartHistogram.Location = new System.Drawing.Point(412, 75);
+            this.chartHistogram.Location = new System.Drawing.Point(549, 94);
+            this.chartHistogram.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.chartHistogram.Name = "chartHistogram";
-            this.chartHistogram.Size = new System.Drawing.Size(349, 291);
+            this.chartHistogram.Size = new System.Drawing.Size(465, 364);
             this.chartHistogram.TabIndex = 5;
             this.chartHistogram.Text = "直方圖";
             title1.Name = "Title1";
@@ -105,9 +110,10 @@ namespace AdvancedImageProcessing
             // 
             // btnInputFile
             // 
-            this.btnInputFile.Location = new System.Drawing.Point(30, 34);
+            this.btnInputFile.Location = new System.Drawing.Point(40, 42);
+            this.btnInputFile.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnInputFile.Name = "btnInputFile";
-            this.btnInputFile.Size = new System.Drawing.Size(75, 23);
+            this.btnInputFile.Size = new System.Drawing.Size(100, 29);
             this.btnInputFile.TabIndex = 0;
             this.btnInputFile.Text = "檔案";
             this.btnInputFile.UseVisualStyleBackColor = true;
@@ -115,9 +121,10 @@ namespace AdvancedImageProcessing
             // 
             // btnImageRotation
             // 
-            this.btnImageRotation.Location = new System.Drawing.Point(128, 34);
+            this.btnImageRotation.Location = new System.Drawing.Point(167, 42);
+            this.btnImageRotation.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnImageRotation.Name = "btnImageRotation";
-            this.btnImageRotation.Size = new System.Drawing.Size(75, 23);
+            this.btnImageRotation.Size = new System.Drawing.Size(100, 29);
             this.btnImageRotation.TabIndex = 1;
             this.btnImageRotation.Text = "影像旋轉";
             this.btnImageRotation.UseVisualStyleBackColor = true;
@@ -125,9 +132,10 @@ namespace AdvancedImageProcessing
             // 
             // btnImageHistogram
             // 
-            this.btnImageHistogram.Location = new System.Drawing.Point(226, 34);
+            this.btnImageHistogram.Location = new System.Drawing.Point(293, 42);
+            this.btnImageHistogram.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnImageHistogram.Name = "btnImageHistogram";
-            this.btnImageHistogram.Size = new System.Drawing.Size(75, 23);
+            this.btnImageHistogram.Size = new System.Drawing.Size(100, 29);
             this.btnImageHistogram.TabIndex = 4;
             this.btnImageHistogram.Text = "直方圖";
             this.btnImageHistogram.UseVisualStyleBackColor = true;
@@ -135,9 +143,10 @@ namespace AdvancedImageProcessing
             // 
             // btnNoiseGeneration
             // 
-            this.btnNoiseGeneration.Location = new System.Drawing.Point(324, 34);
+            this.btnNoiseGeneration.Location = new System.Drawing.Point(420, 42);
+            this.btnNoiseGeneration.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnNoiseGeneration.Name = "btnNoiseGeneration";
-            this.btnNoiseGeneration.Size = new System.Drawing.Size(75, 23);
+            this.btnNoiseGeneration.Size = new System.Drawing.Size(100, 29);
             this.btnNoiseGeneration.TabIndex = 6;
             this.btnNoiseGeneration.Text = "雜訊產生";
             this.btnNoiseGeneration.UseVisualStyleBackColor = true;
@@ -145,25 +154,28 @@ namespace AdvancedImageProcessing
             // 
             // picNoise
             // 
-            this.picNoise.Location = new System.Drawing.Point(278, 0);
+            this.picNoise.Location = new System.Drawing.Point(371, 0);
+            this.picNoise.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.picNoise.Name = "picNoise";
-            this.picNoise.Size = new System.Drawing.Size(175, 146);
+            this.picNoise.Size = new System.Drawing.Size(233, 182);
             this.picNoise.TabIndex = 7;
             this.picNoise.TabStop = false;
             // 
             // picNoiseOutput
             // 
-            this.picNoiseOutput.Location = new System.Drawing.Point(556, 0);
+            this.picNoiseOutput.Location = new System.Drawing.Point(741, 0);
+            this.picNoiseOutput.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.picNoiseOutput.Name = "picNoiseOutput";
-            this.picNoiseOutput.Size = new System.Drawing.Size(175, 146);
+            this.picNoiseOutput.Size = new System.Drawing.Size(233, 182);
             this.picNoiseOutput.TabIndex = 8;
             this.picNoiseOutput.TabStop = false;
             // 
             // picNoiseInput
             // 
             this.picNoiseInput.Location = new System.Drawing.Point(0, 0);
+            this.picNoiseInput.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.picNoiseInput.Name = "picNoiseInput";
-            this.picNoiseInput.Size = new System.Drawing.Size(175, 146);
+            this.picNoiseInput.Size = new System.Drawing.Size(233, 182);
             this.picNoiseInput.TabIndex = 9;
             this.picNoiseInput.TabStop = false;
             // 
@@ -180,9 +192,10 @@ namespace AdvancedImageProcessing
             chartArea2.Name = "ChartArea1";
             this.chartNoiseInputHistogram.ChartAreas.Add(chartArea2);
             this.chartNoiseInputHistogram.Enabled = false;
-            this.chartNoiseInputHistogram.Location = new System.Drawing.Point(0, 184);
+            this.chartNoiseInputHistogram.Location = new System.Drawing.Point(0, 230);
+            this.chartNoiseInputHistogram.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.chartNoiseInputHistogram.Name = "chartNoiseInputHistogram";
-            this.chartNoiseInputHistogram.Size = new System.Drawing.Size(175, 146);
+            this.chartNoiseInputHistogram.Size = new System.Drawing.Size(233, 182);
             this.chartNoiseInputHistogram.TabIndex = 10;
             this.chartNoiseInputHistogram.Text = "直方圖";
             title2.Name = "Title1";
@@ -206,9 +219,10 @@ namespace AdvancedImageProcessing
             chartArea3.Name = "ChartArea1";
             this.chartNoiseHistogram.ChartAreas.Add(chartArea3);
             this.chartNoiseHistogram.Enabled = false;
-            this.chartNoiseHistogram.Location = new System.Drawing.Point(278, 184);
+            this.chartNoiseHistogram.Location = new System.Drawing.Point(371, 230);
+            this.chartNoiseHistogram.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.chartNoiseHistogram.Name = "chartNoiseHistogram";
-            this.chartNoiseHistogram.Size = new System.Drawing.Size(175, 146);
+            this.chartNoiseHistogram.Size = new System.Drawing.Size(233, 182);
             this.chartNoiseHistogram.TabIndex = 11;
             this.chartNoiseHistogram.Text = "直方圖";
             title3.Name = "Title1";
@@ -231,9 +245,10 @@ namespace AdvancedImageProcessing
             chartArea4.Name = "ChartArea1";
             this.chartNoiseOutputHistogram.ChartAreas.Add(chartArea4);
             this.chartNoiseOutputHistogram.Enabled = false;
-            this.chartNoiseOutputHistogram.Location = new System.Drawing.Point(556, 184);
+            this.chartNoiseOutputHistogram.Location = new System.Drawing.Point(741, 230);
+            this.chartNoiseOutputHistogram.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.chartNoiseOutputHistogram.Name = "chartNoiseOutputHistogram";
-            this.chartNoiseOutputHistogram.Size = new System.Drawing.Size(175, 146);
+            this.chartNoiseOutputHistogram.Size = new System.Drawing.Size(233, 182);
             this.chartNoiseOutputHistogram.TabIndex = 12;
             this.chartNoiseOutputHistogram.Text = "直方圖";
             title4.Name = "Title1";
@@ -248,18 +263,32 @@ namespace AdvancedImageProcessing
             this.gpNoiseGeneration.Controls.Add(this.picNoiseInput);
             this.gpNoiseGeneration.Controls.Add(this.chartNoiseInputHistogram);
             this.gpNoiseGeneration.Controls.Add(this.picNoiseOutput);
-            this.gpNoiseGeneration.Location = new System.Drawing.Point(30, 75);
+            this.gpNoiseGeneration.Location = new System.Drawing.Point(40, 94);
+            this.gpNoiseGeneration.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gpNoiseGeneration.Name = "gpNoiseGeneration";
-            this.gpNoiseGeneration.Size = new System.Drawing.Size(731, 330);
+            this.gpNoiseGeneration.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gpNoiseGeneration.Size = new System.Drawing.Size(975, 412);
             this.gpNoiseGeneration.TabIndex = 13;
             this.gpNoiseGeneration.TabStop = false;
             this.gpNoiseGeneration.Visible = false;
             // 
+            // btnConvolution
+            // 
+            this.btnConvolution.Location = new System.Drawing.Point(547, 42);
+            this.btnConvolution.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnConvolution.Name = "btnConvolution";
+            this.btnConvolution.Size = new System.Drawing.Size(100, 29);
+            this.btnConvolution.TabIndex = 14;
+            this.btnConvolution.Text = "卷積運算";
+            this.btnConvolution.UseVisualStyleBackColor = true;
+            this.btnConvolution.Click += new System.EventHandler(this.btnConvolution_Click);
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1067, 562);
+            this.Controls.Add(this.btnConvolution);
             this.Controls.Add(this.btnNoiseGeneration);
             this.Controls.Add(this.chartHistogram);
             this.Controls.Add(this.btnImageHistogram);
@@ -268,6 +297,7 @@ namespace AdvancedImageProcessing
             this.Controls.Add(this.btnImageRotation);
             this.Controls.Add(this.btnInputFile);
             this.Controls.Add(this.gpNoiseGeneration);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Form1";
             this.Text = "AIP61147046s";
             ((System.ComponentModel.ISupportInitialize)(this.picInput)).EndInit();
@@ -299,6 +329,7 @@ namespace AdvancedImageProcessing
         private System.Windows.Forms.DataVisualization.Charting.Chart chartNoiseHistogram;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartNoiseOutputHistogram;
         private System.Windows.Forms.GroupBox gpNoiseGeneration;
+        private System.Windows.Forms.Button btnConvolution;
     }
 }
 

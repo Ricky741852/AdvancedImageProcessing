@@ -61,10 +61,10 @@ namespace AdvancedImageProcessing
 
         private void txtPercentage_TextChanged(object sender, EventArgs e)
         {
-            if (!int.TryParse(txtPercentage.Text, out int percentage) || percentage < 0)
+            if (!int.TryParse(txtPercentage.Text, out int percentage) || percentage < 0 || percentage > 100)
             {
                 txtPercentage.Text = "25";
-                MessageBox.Show("請輸入正實數");
+                MessageBox.Show("請輸入0~100間之整數");
             }
         }
 
