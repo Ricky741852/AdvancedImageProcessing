@@ -112,7 +112,7 @@ namespace AdvancedImageProcessing
                 InitPictureBox();
                 chartHistogram.Visible = true;
 
-                HistogramSeries histogramSeries = GetHistogram(picInput.Image);
+                HistogramSeries histogramSeries = GetHistogramSeries(GetHIstogramValues(picInput.Image));
 
                 chartHistogram.Series.Clear();
                 chartHistogram.Series.Add(histogramSeries.Series);
@@ -126,11 +126,11 @@ namespace AdvancedImageProcessing
         }
 
         /// <summary>
-        /// 取得直方圖
+        /// 取得直方圖陣列
         /// </summary>
         /// <param name="image">輸入影像</param>
-        /// <returns>直方圖內容</returns>
-        private HistogramSeries GetHistogram(Image image)
+        /// <returns></returns>
+        private int[] GetHIstogramValues(Image image)
         {
             int[] values = new int[256];
 
@@ -151,6 +151,16 @@ namespace AdvancedImageProcessing
                 }
             }
 
+            return values;
+        }
+
+        /// <summary>
+        /// 取得直方圖
+        /// </summary>
+        /// <param name="image">輸入影像</param>
+        /// <returns>取得直方圖內容</returns>
+        private HistogramSeries GetHistogramSeries(int[] values)
+        {
             Series series = new Series
             {
                 Color = Color.Gray,
@@ -207,8 +217,6 @@ namespace AdvancedImageProcessing
                     #region 設定視窗顯示
 
                     picInput.Visible = false;
-                    picOutput.Visible = false;
-                    chartHistogram.Visible = false;
                     gpNoiseGeneration.Visible = true;
 
                     #endregion
@@ -219,13 +227,6 @@ namespace AdvancedImageProcessing
                     Bitmap bmpInput = new Bitmap(picNoiseInput.Image, w, h);
                     Bitmap bmpNoise = new Bitmap(w, h);
                     Bitmap bmpOutput = new Bitmap(bmpInput, w, h);
-                    Series sNoise = new Series
-                    {
-                        Color = Color.Gray,
-                        IsVisibleInLegend = false,
-                        ChartType = SeriesChartType.Column,
-                        MarkerStyle = MarkerStyle.None
-                    };
 
                     //Noise Histogram
                     int[] nh = new int[256];
@@ -318,24 +319,19 @@ namespace AdvancedImageProcessing
                     picNoise.Image = bmpNoise;
                     picNoiseOutput.Image = bmpOutput;
 
-                    HistogramSeries hsInput = GetHistogram(bmpInput);
+                    HistogramSeries hsInput = GetHistogramSeries(GetHIstogramValues(bmpInput));
                     chartNoiseInputHistogram.Series.Clear();
                     chartNoiseInputHistogram.Series.Add(hsInput.Series);
                     chartNoiseInputHistogram.Series[0]["PointWidth"] = "1";
                     chartNoiseInputHistogram.ChartAreas[0].AxisY.Maximum = hsInput.MaxValue * 1.1;
 
-
-                    //加入點位
-                    for (int i = 0; i < 256; i++)
-                    {
-                        sNoise.Points.AddXY(i, nh[i]);
-                    }
+                    HistogramSeries hsNoise = GetHistogramSeries(nh);
                     chartNoiseHistogram.Series.Clear();
-                    chartNoiseHistogram.Series.Add(sNoise);
+                    chartNoiseHistogram.Series.Add(hsNoise.Series);
                     chartNoiseHistogram.Series[0]["PointWidth"] = "1";
-                    chartNoiseHistogram.ChartAreas[0].AxisY.Maximum = nh.Max() * 1.1;
+                    chartNoiseHistogram.ChartAreas[0].AxisY.Maximum = hsNoise.MaxValue * 1.1;
 
-                    HistogramSeries hsOutput = GetHistogram(bmpOutput);
+                    HistogramSeries hsOutput = GetHistogramSeries(GetHIstogramValues(bmpOutput));
                     chartNoiseOutputHistogram.Series.Clear();
                     chartNoiseOutputHistogram.Series.Add(hsOutput.Series);
                     chartNoiseOutputHistogram.Series[0]["PointWidth"] = "1";
@@ -608,11 +604,58 @@ namespace AdvancedImageProcessing
         private void InitPictureBox()
         {
             gpNoiseGeneration.Visible = false;
+            gpHistogramEqualization.Visible = false;
             chartHistogram.Visible = false;
             picOutput.Visible = false;
             picInput.Visible = true;
         }
 
         #endregion
+
+        private void btnHistogramEqualization_Click(object sender, EventArgs e)
+        {
+            if (picInput.Image != null)
+            {
+                InitPictureBox();
+
+                #region 設定視窗顯示
+
+                picInput.Visible = false;
+                gpHistogramEqualization.Visible = true;
+
+                #endregion
+
+                Bitmap bmp = RGB2Gray(new Bitmap(picInput.Image));
+                int w = picHEInput.Width;
+                int h = picHEOutput.Height;
+                Bitmap bmpInput = new Bitmap(bmp, w, h);
+                Bitmap bmpOutput = new Bitmap(bmp, w, h);
+
+                #region 輸出雜訊圖&結果圖
+
+                picHEInput.Image = bmpInput;
+                picHEOutput.Image = bmpOutput;
+
+                int[] values = GetHIstogramValues(bmpInput);
+
+                HistogramSeries hsInput = GetHistogramSeries(values);
+                chartHEInput.Series.Clear();
+                chartHEInput.Series.Add(hsInput.Series);
+                chartHEInput.Series[0]["PointWidth"] = "1";
+                chartHEInput.ChartAreas[0].AxisY.Maximum = hsInput.MaxValue * 1.1;
+
+                HistogramSeries hsOutput = GetHistogramSeries(GetHIstogramValues(bmpOutput));
+                chartHEOutput.Series.Clear();
+                chartHEOutput.Series.Add(hsOutput.Series);
+                chartHEOutput.Series[0]["PointWidth"] = "1";
+                chartHEOutput.ChartAreas[0].AxisY.Maximum = hsOutput.MaxValue * 1.1;
+
+                #endregion
+            }
+            else
+            {
+                MessageBox.Show("請先選取檔案");
+            }
+        }
     }
 }

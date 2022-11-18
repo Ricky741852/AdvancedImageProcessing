@@ -29,14 +29,18 @@ namespace AdvancedImageProcessing
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Title title4 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Title title7 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Title title8 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea9 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Title title9 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea10 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Title title10 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea11 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Title title11 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea12 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Title title12 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.picInput = new System.Windows.Forms.PictureBox();
             this.picOutput = new System.Windows.Forms.PictureBox();
             this.chartHistogram = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -52,6 +56,12 @@ namespace AdvancedImageProcessing
             this.chartNoiseOutputHistogram = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.gpNoiseGeneration = new System.Windows.Forms.GroupBox();
             this.btnConvolution = new System.Windows.Forms.Button();
+            this.btnHistogramEqualization = new System.Windows.Forms.Button();
+            this.gpHistogramEqualization = new System.Windows.Forms.GroupBox();
+            this.chartHEOutput = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.picHEInput = new System.Windows.Forms.PictureBox();
+            this.chartHEInput = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.picHEOutput = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.picInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picOutput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartHistogram)).BeginInit();
@@ -62,12 +72,17 @@ namespace AdvancedImageProcessing
             ((System.ComponentModel.ISupportInitialize)(this.chartNoiseHistogram)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartNoiseOutputHistogram)).BeginInit();
             this.gpNoiseGeneration.SuspendLayout();
+            this.gpHistogramEqualization.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartHEOutput)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picHEInput)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartHEInput)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picHEOutput)).BeginInit();
             this.SuspendLayout();
             // 
             // picInput
             // 
             this.picInput.Location = new System.Drawing.Point(40, 94);
-            this.picInput.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.picInput.Margin = new System.Windows.Forms.Padding(4);
             this.picInput.Name = "picInput";
             this.picInput.Size = new System.Drawing.Size(465, 364);
             this.picInput.TabIndex = 2;
@@ -76,7 +91,7 @@ namespace AdvancedImageProcessing
             // picOutput
             // 
             this.picOutput.Location = new System.Drawing.Point(549, 94);
-            this.picOutput.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.picOutput.Margin = new System.Windows.Forms.Padding(4);
             this.picOutput.Name = "picOutput";
             this.picOutput.Size = new System.Drawing.Size(465, 364);
             this.picOutput.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -86,32 +101,32 @@ namespace AdvancedImageProcessing
             // 
             // chartHistogram
             // 
-            chartArea1.AxisX.Interval = 50D;
-            chartArea1.AxisX.MajorGrid.Enabled = false;
-            chartArea1.AxisX.Maximum = 256D;
-            chartArea1.AxisX.Minimum = 0D;
-            chartArea1.AxisX.Title = "Intensity";
-            chartArea1.AxisX.TitleAlignment = System.Drawing.StringAlignment.Far;
-            chartArea1.AxisY.MajorGrid.Enabled = false;
-            chartArea1.AxisY.Title = "Frequency";
-            chartArea1.Name = "ChartArea1";
-            this.chartHistogram.ChartAreas.Add(chartArea1);
+            chartArea7.AxisX.Interval = 50D;
+            chartArea7.AxisX.MajorGrid.Enabled = false;
+            chartArea7.AxisX.Maximum = 256D;
+            chartArea7.AxisX.Minimum = 0D;
+            chartArea7.AxisX.Title = "Intensity";
+            chartArea7.AxisX.TitleAlignment = System.Drawing.StringAlignment.Far;
+            chartArea7.AxisY.MajorGrid.Enabled = false;
+            chartArea7.AxisY.Title = "Frequency";
+            chartArea7.Name = "ChartArea1";
+            this.chartHistogram.ChartAreas.Add(chartArea7);
             this.chartHistogram.Enabled = false;
             this.chartHistogram.Location = new System.Drawing.Point(549, 94);
-            this.chartHistogram.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chartHistogram.Margin = new System.Windows.Forms.Padding(4);
             this.chartHistogram.Name = "chartHistogram";
             this.chartHistogram.Size = new System.Drawing.Size(465, 364);
             this.chartHistogram.TabIndex = 5;
             this.chartHistogram.Text = "直方圖";
-            title1.Name = "Title1";
-            title1.Text = "Image Histogram";
-            this.chartHistogram.Titles.Add(title1);
+            title7.Name = "Title1";
+            title7.Text = "Image Histogram";
+            this.chartHistogram.Titles.Add(title7);
             this.chartHistogram.Visible = false;
             // 
             // btnInputFile
             // 
             this.btnInputFile.Location = new System.Drawing.Point(40, 42);
-            this.btnInputFile.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnInputFile.Margin = new System.Windows.Forms.Padding(4);
             this.btnInputFile.Name = "btnInputFile";
             this.btnInputFile.Size = new System.Drawing.Size(100, 29);
             this.btnInputFile.TabIndex = 0;
@@ -121,8 +136,8 @@ namespace AdvancedImageProcessing
             // 
             // btnImageRotation
             // 
-            this.btnImageRotation.Location = new System.Drawing.Point(167, 42);
-            this.btnImageRotation.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnImageRotation.Location = new System.Drawing.Point(166, 42);
+            this.btnImageRotation.Margin = new System.Windows.Forms.Padding(4);
             this.btnImageRotation.Name = "btnImageRotation";
             this.btnImageRotation.Size = new System.Drawing.Size(100, 29);
             this.btnImageRotation.TabIndex = 1;
@@ -132,8 +147,8 @@ namespace AdvancedImageProcessing
             // 
             // btnImageHistogram
             // 
-            this.btnImageHistogram.Location = new System.Drawing.Point(293, 42);
-            this.btnImageHistogram.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnImageHistogram.Location = new System.Drawing.Point(292, 42);
+            this.btnImageHistogram.Margin = new System.Windows.Forms.Padding(4);
             this.btnImageHistogram.Name = "btnImageHistogram";
             this.btnImageHistogram.Size = new System.Drawing.Size(100, 29);
             this.btnImageHistogram.TabIndex = 4;
@@ -143,8 +158,8 @@ namespace AdvancedImageProcessing
             // 
             // btnNoiseGeneration
             // 
-            this.btnNoiseGeneration.Location = new System.Drawing.Point(420, 42);
-            this.btnNoiseGeneration.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnNoiseGeneration.Location = new System.Drawing.Point(418, 42);
+            this.btnNoiseGeneration.Margin = new System.Windows.Forms.Padding(4);
             this.btnNoiseGeneration.Name = "btnNoiseGeneration";
             this.btnNoiseGeneration.Size = new System.Drawing.Size(100, 29);
             this.btnNoiseGeneration.TabIndex = 6;
@@ -155,7 +170,7 @@ namespace AdvancedImageProcessing
             // picNoise
             // 
             this.picNoise.Location = new System.Drawing.Point(371, 0);
-            this.picNoise.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.picNoise.Margin = new System.Windows.Forms.Padding(4);
             this.picNoise.Name = "picNoise";
             this.picNoise.Size = new System.Drawing.Size(233, 182);
             this.picNoise.TabIndex = 7;
@@ -164,7 +179,7 @@ namespace AdvancedImageProcessing
             // picNoiseOutput
             // 
             this.picNoiseOutput.Location = new System.Drawing.Point(741, 0);
-            this.picNoiseOutput.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.picNoiseOutput.Margin = new System.Windows.Forms.Padding(4);
             this.picNoiseOutput.Name = "picNoiseOutput";
             this.picNoiseOutput.Size = new System.Drawing.Size(233, 182);
             this.picNoiseOutput.TabIndex = 8;
@@ -173,7 +188,7 @@ namespace AdvancedImageProcessing
             // picNoiseInput
             // 
             this.picNoiseInput.Location = new System.Drawing.Point(0, 0);
-            this.picNoiseInput.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.picNoiseInput.Margin = new System.Windows.Forms.Padding(4);
             this.picNoiseInput.Name = "picNoiseInput";
             this.picNoiseInput.Size = new System.Drawing.Size(233, 182);
             this.picNoiseInput.TabIndex = 9;
@@ -181,79 +196,79 @@ namespace AdvancedImageProcessing
             // 
             // chartNoiseInputHistogram
             // 
-            chartArea2.AxisX.Interval = 50D;
-            chartArea2.AxisX.MajorGrid.Enabled = false;
-            chartArea2.AxisX.Maximum = 256D;
-            chartArea2.AxisX.Minimum = 0D;
-            chartArea2.AxisX.Title = "Intensity";
-            chartArea2.AxisX.TitleAlignment = System.Drawing.StringAlignment.Far;
-            chartArea2.AxisY.MajorGrid.Enabled = false;
-            chartArea2.AxisY.Title = "Frequency";
-            chartArea2.Name = "ChartArea1";
-            this.chartNoiseInputHistogram.ChartAreas.Add(chartArea2);
+            chartArea8.AxisX.Interval = 50D;
+            chartArea8.AxisX.MajorGrid.Enabled = false;
+            chartArea8.AxisX.Maximum = 256D;
+            chartArea8.AxisX.Minimum = 0D;
+            chartArea8.AxisX.Title = "Intensity";
+            chartArea8.AxisX.TitleAlignment = System.Drawing.StringAlignment.Far;
+            chartArea8.AxisY.MajorGrid.Enabled = false;
+            chartArea8.AxisY.Title = "Frequency";
+            chartArea8.Name = "ChartArea1";
+            this.chartNoiseInputHistogram.ChartAreas.Add(chartArea8);
             this.chartNoiseInputHistogram.Enabled = false;
             this.chartNoiseInputHistogram.Location = new System.Drawing.Point(0, 230);
-            this.chartNoiseInputHistogram.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chartNoiseInputHistogram.Margin = new System.Windows.Forms.Padding(4);
             this.chartNoiseInputHistogram.Name = "chartNoiseInputHistogram";
             this.chartNoiseInputHistogram.Size = new System.Drawing.Size(233, 182);
             this.chartNoiseInputHistogram.TabIndex = 10;
             this.chartNoiseInputHistogram.Text = "直方圖";
-            title2.Name = "Title1";
-            title2.Text = "Input Histogram";
-            this.chartNoiseInputHistogram.Titles.Add(title2);
+            title8.Name = "Title1";
+            title8.Text = "Input Histogram";
+            this.chartNoiseInputHistogram.Titles.Add(title8);
             // 
             // chartNoiseHistogram
             // 
-            chartArea3.AxisX.Interval = 50D;
-            chartArea3.AxisX.MajorGrid.Enabled = false;
-            chartArea3.AxisX.MajorGrid.LineWidth = 0;
-            chartArea3.AxisX.Maximum = 256D;
-            chartArea3.AxisX.Minimum = 0D;
-            chartArea3.AxisX.Title = "Intensity";
-            chartArea3.AxisX.TitleAlignment = System.Drawing.StringAlignment.Far;
-            chartArea3.AxisX2.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.False;
-            chartArea3.AxisY.MajorGrid.Enabled = false;
-            chartArea3.AxisY.MajorGrid.LineWidth = 0;
-            chartArea3.AxisY.Title = "Frequency";
-            chartArea3.AxisY2.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.False;
-            chartArea3.Name = "ChartArea1";
-            this.chartNoiseHistogram.ChartAreas.Add(chartArea3);
+            chartArea9.AxisX.Interval = 50D;
+            chartArea9.AxisX.MajorGrid.Enabled = false;
+            chartArea9.AxisX.MajorGrid.LineWidth = 0;
+            chartArea9.AxisX.Maximum = 256D;
+            chartArea9.AxisX.Minimum = 0D;
+            chartArea9.AxisX.Title = "Intensity";
+            chartArea9.AxisX.TitleAlignment = System.Drawing.StringAlignment.Far;
+            chartArea9.AxisX2.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.False;
+            chartArea9.AxisY.MajorGrid.Enabled = false;
+            chartArea9.AxisY.MajorGrid.LineWidth = 0;
+            chartArea9.AxisY.Title = "Frequency";
+            chartArea9.AxisY2.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.False;
+            chartArea9.Name = "ChartArea1";
+            this.chartNoiseHistogram.ChartAreas.Add(chartArea9);
             this.chartNoiseHistogram.Enabled = false;
             this.chartNoiseHistogram.Location = new System.Drawing.Point(371, 230);
-            this.chartNoiseHistogram.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chartNoiseHistogram.Margin = new System.Windows.Forms.Padding(4);
             this.chartNoiseHistogram.Name = "chartNoiseHistogram";
             this.chartNoiseHistogram.Size = new System.Drawing.Size(233, 182);
             this.chartNoiseHistogram.TabIndex = 11;
             this.chartNoiseHistogram.Text = "直方圖";
-            title3.Name = "Title1";
-            title3.Text = "Noise Histogram";
-            this.chartNoiseHistogram.Titles.Add(title3);
+            title9.Name = "Title1";
+            title9.Text = "Noise Histogram";
+            this.chartNoiseHistogram.Titles.Add(title9);
             // 
             // chartNoiseOutputHistogram
             // 
-            chartArea4.AxisX.Interval = 50D;
-            chartArea4.AxisX.MajorGrid.Enabled = false;
-            chartArea4.AxisX.Maximum = 256D;
-            chartArea4.AxisX.Minimum = 0D;
-            chartArea4.AxisX.Title = "Intensity";
-            chartArea4.AxisX.TitleAlignment = System.Drawing.StringAlignment.Far;
-            chartArea4.AxisX2.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.False;
-            chartArea4.AxisY.MajorGrid.Enabled = false;
-            chartArea4.AxisY.MajorGrid.LineWidth = 0;
-            chartArea4.AxisY.Title = "Frequency";
-            chartArea4.AxisY2.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.False;
-            chartArea4.Name = "ChartArea1";
-            this.chartNoiseOutputHistogram.ChartAreas.Add(chartArea4);
+            chartArea10.AxisX.Interval = 50D;
+            chartArea10.AxisX.MajorGrid.Enabled = false;
+            chartArea10.AxisX.Maximum = 256D;
+            chartArea10.AxisX.Minimum = 0D;
+            chartArea10.AxisX.Title = "Intensity";
+            chartArea10.AxisX.TitleAlignment = System.Drawing.StringAlignment.Far;
+            chartArea10.AxisX2.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.False;
+            chartArea10.AxisY.MajorGrid.Enabled = false;
+            chartArea10.AxisY.MajorGrid.LineWidth = 0;
+            chartArea10.AxisY.Title = "Frequency";
+            chartArea10.AxisY2.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.False;
+            chartArea10.Name = "ChartArea1";
+            this.chartNoiseOutputHistogram.ChartAreas.Add(chartArea10);
             this.chartNoiseOutputHistogram.Enabled = false;
             this.chartNoiseOutputHistogram.Location = new System.Drawing.Point(741, 230);
-            this.chartNoiseOutputHistogram.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chartNoiseOutputHistogram.Margin = new System.Windows.Forms.Padding(4);
             this.chartNoiseOutputHistogram.Name = "chartNoiseOutputHistogram";
             this.chartNoiseOutputHistogram.Size = new System.Drawing.Size(233, 182);
             this.chartNoiseOutputHistogram.TabIndex = 12;
             this.chartNoiseOutputHistogram.Text = "直方圖";
-            title4.Name = "Title1";
-            title4.Text = "Output Histogram";
-            this.chartNoiseOutputHistogram.Titles.Add(title4);
+            title10.Name = "Title1";
+            title10.Text = "Output Histogram";
+            this.chartNoiseOutputHistogram.Titles.Add(title10);
             // 
             // gpNoiseGeneration
             // 
@@ -264,9 +279,9 @@ namespace AdvancedImageProcessing
             this.gpNoiseGeneration.Controls.Add(this.chartNoiseInputHistogram);
             this.gpNoiseGeneration.Controls.Add(this.picNoiseOutput);
             this.gpNoiseGeneration.Location = new System.Drawing.Point(40, 94);
-            this.gpNoiseGeneration.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gpNoiseGeneration.Margin = new System.Windows.Forms.Padding(4);
             this.gpNoiseGeneration.Name = "gpNoiseGeneration";
-            this.gpNoiseGeneration.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gpNoiseGeneration.Padding = new System.Windows.Forms.Padding(4);
             this.gpNoiseGeneration.Size = new System.Drawing.Size(975, 412);
             this.gpNoiseGeneration.TabIndex = 13;
             this.gpNoiseGeneration.TabStop = false;
@@ -274,8 +289,8 @@ namespace AdvancedImageProcessing
             // 
             // btnConvolution
             // 
-            this.btnConvolution.Location = new System.Drawing.Point(547, 42);
-            this.btnConvolution.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnConvolution.Location = new System.Drawing.Point(544, 42);
+            this.btnConvolution.Margin = new System.Windows.Forms.Padding(4);
             this.btnConvolution.Name = "btnConvolution";
             this.btnConvolution.Size = new System.Drawing.Size(100, 29);
             this.btnConvolution.TabIndex = 14;
@@ -283,11 +298,106 @@ namespace AdvancedImageProcessing
             this.btnConvolution.UseVisualStyleBackColor = true;
             this.btnConvolution.Click += new System.EventHandler(this.btnConvolution_Click);
             // 
+            // btnHistogramEqualization
+            // 
+            this.btnHistogramEqualization.Location = new System.Drawing.Point(670, 42);
+            this.btnHistogramEqualization.Margin = new System.Windows.Forms.Padding(4);
+            this.btnHistogramEqualization.Name = "btnHistogramEqualization";
+            this.btnHistogramEqualization.Size = new System.Drawing.Size(100, 29);
+            this.btnHistogramEqualization.TabIndex = 15;
+            this.btnHistogramEqualization.Text = "直方圖均化";
+            this.btnHistogramEqualization.UseVisualStyleBackColor = true;
+            this.btnHistogramEqualization.Click += new System.EventHandler(this.btnHistogramEqualization_Click);
+            // 
+            // gpHistogramEqualization
+            // 
+            this.gpHistogramEqualization.Controls.Add(this.chartHEOutput);
+            this.gpHistogramEqualization.Controls.Add(this.picHEInput);
+            this.gpHistogramEqualization.Controls.Add(this.chartHEInput);
+            this.gpHistogramEqualization.Controls.Add(this.picHEOutput);
+            this.gpHistogramEqualization.Location = new System.Drawing.Point(39, 94);
+            this.gpHistogramEqualization.Margin = new System.Windows.Forms.Padding(4);
+            this.gpHistogramEqualization.Name = "gpHistogramEqualization";
+            this.gpHistogramEqualization.Padding = new System.Windows.Forms.Padding(4);
+            this.gpHistogramEqualization.Size = new System.Drawing.Size(975, 412);
+            this.gpHistogramEqualization.TabIndex = 14;
+            this.gpHistogramEqualization.TabStop = false;
+            this.gpHistogramEqualization.Visible = false;
+            // 
+            // chartHEOutput
+            // 
+            chartArea11.AxisX.Interval = 50D;
+            chartArea11.AxisX.MajorGrid.Enabled = false;
+            chartArea11.AxisX.Maximum = 256D;
+            chartArea11.AxisX.Minimum = 0D;
+            chartArea11.AxisX.Title = "Intensity";
+            chartArea11.AxisX.TitleAlignment = System.Drawing.StringAlignment.Far;
+            chartArea11.AxisX2.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.False;
+            chartArea11.AxisY.MajorGrid.Enabled = false;
+            chartArea11.AxisY.MajorGrid.LineWidth = 0;
+            chartArea11.AxisY.Title = "Frequency";
+            chartArea11.AxisY2.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.False;
+            chartArea11.Name = "ChartArea1";
+            this.chartHEOutput.ChartAreas.Add(chartArea11);
+            this.chartHEOutput.Enabled = false;
+            this.chartHEOutput.Location = new System.Drawing.Point(597, 212);
+            this.chartHEOutput.Margin = new System.Windows.Forms.Padding(4);
+            this.chartHEOutput.Name = "chartHEOutput";
+            this.chartHEOutput.Size = new System.Drawing.Size(256, 200);
+            this.chartHEOutput.TabIndex = 12;
+            this.chartHEOutput.Text = "直方圖";
+            title11.Name = "Title1";
+            title11.Text = "Output Histogram";
+            this.chartHEOutput.Titles.Add(title11);
+            // 
+            // picHEInput
+            // 
+            this.picHEInput.Location = new System.Drawing.Point(127, 0);
+            this.picHEInput.Margin = new System.Windows.Forms.Padding(4);
+            this.picHEInput.Name = "picHEInput";
+            this.picHEInput.Size = new System.Drawing.Size(256, 200);
+            this.picHEInput.TabIndex = 9;
+            this.picHEInput.TabStop = false;
+            // 
+            // chartHEInput
+            // 
+            chartArea12.AxisX.Interval = 50D;
+            chartArea12.AxisX.MajorGrid.Enabled = false;
+            chartArea12.AxisX.Maximum = 256D;
+            chartArea12.AxisX.Minimum = 0D;
+            chartArea12.AxisX.Title = "Intensity";
+            chartArea12.AxisX.TitleAlignment = System.Drawing.StringAlignment.Far;
+            chartArea12.AxisY.MajorGrid.Enabled = false;
+            chartArea12.AxisY.Title = "Frequency";
+            chartArea12.Name = "ChartArea1";
+            this.chartHEInput.ChartAreas.Add(chartArea12);
+            this.chartHEInput.Enabled = false;
+            this.chartHEInput.Location = new System.Drawing.Point(127, 212);
+            this.chartHEInput.Margin = new System.Windows.Forms.Padding(4);
+            this.chartHEInput.Name = "chartHEInput";
+            this.chartHEInput.Size = new System.Drawing.Size(256, 200);
+            this.chartHEInput.TabIndex = 10;
+            this.chartHEInput.Text = "直方圖";
+            title12.Name = "Title1";
+            title12.Text = "Input Histogram";
+            this.chartHEInput.Titles.Add(title12);
+            // 
+            // picHEOutput
+            // 
+            this.picHEOutput.Location = new System.Drawing.Point(597, 0);
+            this.picHEOutput.Margin = new System.Windows.Forms.Padding(4);
+            this.picHEOutput.Name = "picHEOutput";
+            this.picHEOutput.Size = new System.Drawing.Size(256, 200);
+            this.picHEOutput.TabIndex = 8;
+            this.picHEOutput.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1067, 562);
+            this.Controls.Add(this.gpHistogramEqualization);
+            this.Controls.Add(this.btnHistogramEqualization);
             this.Controls.Add(this.btnConvolution);
             this.Controls.Add(this.btnNoiseGeneration);
             this.Controls.Add(this.chartHistogram);
@@ -297,7 +407,7 @@ namespace AdvancedImageProcessing
             this.Controls.Add(this.btnImageRotation);
             this.Controls.Add(this.btnInputFile);
             this.Controls.Add(this.gpNoiseGeneration);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "AIP61147046s";
             ((System.ComponentModel.ISupportInitialize)(this.picInput)).EndInit();
@@ -310,6 +420,11 @@ namespace AdvancedImageProcessing
             ((System.ComponentModel.ISupportInitialize)(this.chartNoiseHistogram)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartNoiseOutputHistogram)).EndInit();
             this.gpNoiseGeneration.ResumeLayout(false);
+            this.gpHistogramEqualization.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chartHEOutput)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picHEInput)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartHEInput)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picHEOutput)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -330,6 +445,12 @@ namespace AdvancedImageProcessing
         private System.Windows.Forms.DataVisualization.Charting.Chart chartNoiseOutputHistogram;
         private System.Windows.Forms.GroupBox gpNoiseGeneration;
         private System.Windows.Forms.Button btnConvolution;
+        private System.Windows.Forms.Button btnHistogramEqualization;
+        private System.Windows.Forms.GroupBox gpHistogramEqualization;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartHEOutput;
+        private System.Windows.Forms.PictureBox picHEInput;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartHEInput;
+        private System.Windows.Forms.PictureBox picHEOutput;
     }
 }
 
