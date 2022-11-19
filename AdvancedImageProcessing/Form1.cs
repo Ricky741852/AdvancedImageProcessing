@@ -484,6 +484,83 @@ namespace AdvancedImageProcessing
 
         #endregion
 
+        #region 直方圖均化
+
+        /// <summary>
+        /// 直方圖均化
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnHistogramEqualization_Click(object sender, EventArgs e)
+        {
+            if (picInput.Image != null)
+            {
+                InitPictureBox();
+
+                #region 設定視窗顯示
+
+                picInput.Visible = false;
+                gpHistogramEqualization.Visible = true;
+
+                #endregion
+
+                Bitmap bmp = RGB2Gray(new Bitmap(picInput.Image));
+                int w = picHEInput.Width;
+                int h = picHEOutput.Height;
+                Bitmap bmpInput = new Bitmap(bmp, w, h);
+                Bitmap bmpOutput = new Bitmap(bmp, w, h);
+
+                int[] H = GetHIstogramValues(bmpInput);
+
+                List<int> HList = H.ToList();
+
+                int gmin = HList.FindIndex(value => value > 0);
+
+                int[] Hc = Enumerable.Repeat(0, 256).ToArray();
+
+                Hc[0] = H[0];
+
+                for (int g = 1; g < 256; g++)
+                {
+                    Hc[g] = Hc[g - 1] + H[g];
+                }
+
+                int Hmin = Hc[gmin];
+
+                for (int x = 0; x < w; x++)
+                {
+                    for (int y = 0; y < h; y++)
+                    {
+                        byte g = bmpInput.GetPixel(x, y).R;
+                        int result = (int)Math.Round((double)(Hc[g] - Hmin) / ((w * h) - Hmin) * 255);
+                        bmpOutput.SetPixel(x, y, Color.FromArgb(result, result, result));
+                    }
+                }
+
+                picHEInput.Image = bmpInput;
+                picHEOutput.Image = bmpOutput;
+
+
+                HistogramSeries hsInput = GetHistogramSeries(H);
+                chartHEInput.Series.Clear();
+                chartHEInput.Series.Add(hsInput.Series);
+                chartHEInput.Series[0]["PointWidth"] = "1";
+                chartHEInput.ChartAreas[0].AxisY.Maximum = hsInput.MaxValue * 1.1;
+
+                HistogramSeries hsOutput = GetHistogramSeries(GetHIstogramValues(bmpOutput));
+                chartHEOutput.Series.Clear();
+                chartHEOutput.Series.Add(hsOutput.Series);
+                chartHEOutput.Series[0]["PointWidth"] = "1";
+                chartHEOutput.ChartAreas[0].AxisY.Maximum = hsOutput.MaxValue * 1.1;
+            }
+            else
+            {
+                MessageBox.Show("請先選取檔案");
+            }
+        }
+        
+        #endregion
+
         #region 其他功能
 
         /// <summary>
@@ -611,51 +688,5 @@ namespace AdvancedImageProcessing
         }
 
         #endregion
-
-        private void btnHistogramEqualization_Click(object sender, EventArgs e)
-        {
-            if (picInput.Image != null)
-            {
-                InitPictureBox();
-
-                #region 設定視窗顯示
-
-                picInput.Visible = false;
-                gpHistogramEqualization.Visible = true;
-
-                #endregion
-
-                Bitmap bmp = RGB2Gray(new Bitmap(picInput.Image));
-                int w = picHEInput.Width;
-                int h = picHEOutput.Height;
-                Bitmap bmpInput = new Bitmap(bmp, w, h);
-                Bitmap bmpOutput = new Bitmap(bmp, w, h);
-
-                #region 輸出雜訊圖&結果圖
-
-                picHEInput.Image = bmpInput;
-                picHEOutput.Image = bmpOutput;
-
-                int[] values = GetHIstogramValues(bmpInput);
-
-                HistogramSeries hsInput = GetHistogramSeries(values);
-                chartHEInput.Series.Clear();
-                chartHEInput.Series.Add(hsInput.Series);
-                chartHEInput.Series[0]["PointWidth"] = "1";
-                chartHEInput.ChartAreas[0].AxisY.Maximum = hsInput.MaxValue * 1.1;
-
-                HistogramSeries hsOutput = GetHistogramSeries(GetHIstogramValues(bmpOutput));
-                chartHEOutput.Series.Clear();
-                chartHEOutput.Series.Add(hsOutput.Series);
-                chartHEOutput.Series[0]["PointWidth"] = "1";
-                chartHEOutput.ChartAreas[0].AxisY.Maximum = hsOutput.MaxValue * 1.1;
-
-                #endregion
-            }
-            else
-            {
-                MessageBox.Show("請先選取檔案");
-            }
-        }
     }
 }
