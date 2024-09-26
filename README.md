@@ -1,6 +1,7 @@
 # 高等影像處理 課程作業集
 
-此專案收錄了我在研究所修讀【高等影像處理】課程的作業，每個作業基於 C# 的 Windows Form 實作，並在一個圖形介面中逐步添加新功能。最終的專案介面圖如下所示：![image](https://i.imgur.com/OE2Iinh.png)
+此專案收錄了我在研究所修讀【高等影像處理】課程的作業，每個作業基於 C# 的 Windows Form 實作，並在一個圖形介面中逐步添加新功能。最終的專案介面圖如下所示：
+![image](https://i.imgur.com/OE2Iinh.png)
 
 ## 專案結構
 
@@ -31,7 +32,8 @@
 
 ## 介面預覽
 
-最終的介面圖包含了所有功能的按鈕，並能夠實時操作影像：![image](https://i.imgur.com/jQE2SXJ.gif)
+最終的介面圖包含了所有功能的按鈕，並能夠實時操作影像：
+![image](https://i.imgur.com/jQE2SXJ.gif)
 
 ## 如何使用
 
